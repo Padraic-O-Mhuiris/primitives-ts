@@ -1,9 +1,8 @@
 /** @since 0.0.1 */
-import { Branded } from 'io-ts'
+import { make } from 'io-ts/Codec'
 import { Decoder, number, refine } from 'io-ts/Decoder'
 import { Encoder } from 'io-ts/Encoder'
-import { encodeAsUnderlying } from './utils'
-import { make } from 'io-ts/Codec'
+import { _encoder } from './utils'
 // -------------------------------------------------------------------------------------
 // interface
 // -------------------------------------------------------------------------------------
@@ -14,10 +13,7 @@ import { make } from 'io-ts/Codec'
  * @since 0.0.1
  * @category Type
  */
-export type FiniteNumber = Branded<
-  number,
-  { readonly FiniteNumber: unique symbol }
->
+export type FiniteNumber = number & { readonly FiniteNumber: unique symbol }
 
 // -------------------------------------------------------------------------------------
 // IO
@@ -35,7 +31,7 @@ export const decoder: Decoder<unknown, FiniteNumber> = refine(
 )(number)
 
 /** @ignore */
-export const encoder: Encoder<number, FiniteNumber> = encodeAsUnderlying
+export const encoder: Encoder<number, FiniteNumber> = _encoder
 
 /** @ignore */
 export const codec = make(decoder, encoder)
