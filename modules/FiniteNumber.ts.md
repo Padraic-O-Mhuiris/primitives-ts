@@ -14,7 +14,7 @@ Added in v0.0.1
 
 - [IO](#io)
   - [decoder](#decoder)
-- [utils](#utils)
+- [Type](#type)
   - [FiniteNumber (type alias)](#finitenumber-type-alias)
 
 ---
@@ -33,7 +33,7 @@ export declare const decoder: Decoder<unknown, Branded<number, { readonly Finite
 
 Added in v0.0.1
 
-# utils
+# Type
 
 ## FiniteNumber (type alias)
 
