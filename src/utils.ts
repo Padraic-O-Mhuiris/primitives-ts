@@ -3,7 +3,7 @@
 import { unsafeCoerce } from 'fp-ts/lib/function'
 
 /**
- * Convenience function for simple construction of `Encoder<B, A` for branded types
+ * Convenience function for simple construction of `Encoder<B, A>` for branded types
  *
  * @since 0.0.1
  */
