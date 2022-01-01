@@ -35,10 +35,10 @@ export const decoder: Decoder<unknown, FiniteNumber> = refine(
   'FiniteNumber'
 )(number)
 
-/* @ignore */
+/** @ignore */
 export const encoder: Encoder<number, FiniteNumber> = encodeAsUnderlying
 
-/* @ignore */
+/** @ignore */
 export const codec = make(decoder, encoder)
 
 // -------------------------------------------------------------------------------------
