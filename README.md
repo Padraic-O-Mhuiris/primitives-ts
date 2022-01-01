@@ -1,17 +1,20 @@
 # primitives.ts
 
-[![Test](http:&#x2F;&#x2F;&#x2F;actions&#x2F;workflows&#x2F;build.yml&#x2F;badge.svg)](http:&#x2F;&#x2F;&#x2F;actions&#x2F;workflows&#x2F;build.yml)
-
-[API Docs](http://)
+[API Docs](https://padraic-o-mhuiris.github.io/primitives-ts/)
 
 ---
 
 <!-- AUTO-GENERATED-CONTENT:START (TOC) -->
 
 - [Install](#install)
+
 - [Example](#example)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+## Philosophy
+
+Primitives.ts extends functionality for creating abstract datatypes in typescript using runtime checking
 
 ## Install
 
