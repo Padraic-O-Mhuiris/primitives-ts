@@ -1,3 +1,5 @@
+/** @since 0.0.1 */
+
 import { unsafeCoerce } from 'fp-ts/lib/function'
 
 /**
