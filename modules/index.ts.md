@@ -1,6 +1,6 @@
 ---
 title: index.ts
-nav_order: 1
+nav_order: 2
 parent: Modules
 ---
 
@@ -32,7 +32,7 @@ export declare const greet: (name: string) => string
 **Example**
 
 ```ts
-import { greet } from 'primitives.ts'
+import { greet } from 'primitives-ts'
 assert.deepStrictEqual(greet('World'), 'Hello, World!')
 ```
 
