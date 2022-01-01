@@ -21,7 +21,7 @@ Added in v0.0.1
 
 ## encodeAsUnderlying
 
-Convenience function for simple construction of `Encoder<B, A` for branded types
+Convenience function for simple construction of `Encoder<B, A>` for branded types
 
 **Signature**
 
