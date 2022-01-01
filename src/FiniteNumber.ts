@@ -19,16 +19,14 @@ export type FiniteNumber = Branded<
 >
 
 // -------------------------------------------------------------------------------------
-// constructor
+// IO
 // -------------------------------------------------------------------------------------
 
 /**
  * Decoder for `FiniteNumber`
  *
  * @since 0.0.1
- * @category Parsing
- * @example
- *   import { decoder } from 'primitives-ts/lib/FiniteNumber'
+ * @category IO
  */
 export const decoder: Decoder<unknown, FiniteNumber> = refine(
   (a): a is FiniteNumber => Number.isFinite(a),
