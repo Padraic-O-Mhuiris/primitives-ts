@@ -48,7 +48,7 @@ export const Ord: O.Ord<HexadecimalString> = {
  * @category Instances
  */
 export const Show: S.Show<HexadecimalString> = {
-  show: (a) => a.toString(),
+  show: (a) => a,
 }
 
 // -------------------------------------------------------------------------------------

@@ -45,7 +45,7 @@ export const Ord: O.Ord<FiniteNumber> = {
  * @category Instances
  */
 export const Show: S.Show<FiniteNumber> = {
-  show: (a) => a,
+  show: (a) => a.toString(),
 }
 
 // -----------------------------------------------------------------------------
