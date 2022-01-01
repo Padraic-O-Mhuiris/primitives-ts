@@ -28,7 +28,7 @@ Decoder for `FiniteNumber`
 **Signature**
 
 ```ts
-export declare const decoder: Decoder<unknown, Branded<number, { readonly FiniteNumber: unique symbol }>>
+export declare const decoder: Decoder<unknown, FiniteNumber>
 ```
 
 Added in v0.0.1
@@ -42,7 +42,7 @@ Extension of `number` which filters `(-)Infinity` or `NaN`
 **Signature**
 
 ```ts
-export type FiniteNumber = Branded<number, { readonly FiniteNumber: unique symbol }>
+export type FiniteNumber = number & { readonly FiniteNumber: unique symbol }
 ```
 
 Added in v0.0.1
