@@ -12,7 +12,7 @@ import { pipe } from 'fp-ts/function'
  * @since 0.0.1
  * @category Greetings
  * @example
- *   import { greet } from 'primitives.ts'
+ *   import { greet } from 'primitives-ts'
  *   assert.deepStrictEqual(greet('World'), 'Hello, World!')
  */
 export const greet = (name: string): string =>
