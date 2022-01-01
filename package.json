@@ -1,11 +1,11 @@
 {
-  "name": "primitives.ts",
+  "name": "primitives-ts",
   "homepage": "https://github.com/Padraic-O-Mhuiris/primitives-ts",
   "version": "0.0.1",
   "main": "dist/index.js",
   "license": "MIT",
   "peerDependencies": {
-    "fp-ts": "^2.9.5"
+    "fp-ts": "^2.11.5"
   },
   "dependencies": {},
   "devDependencies": {
@@ -17,6 +17,7 @@
     "eslint": "^7.27.0",
     "fast-check": "^2.13.0",
     "fp-ts": "^2.11.5",
+    "io-ts": "^2.2.16",
     "jest": "^26.6.3",
     "markdown-magic": "^2.0.0",
     "prettier": "^2.2.1",
