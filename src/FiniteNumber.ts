@@ -12,6 +12,7 @@ import { make } from 'io-ts/Codec'
  * Extension of `number` which filters `(-)Infinity` or `NaN`
  *
  * @since 0.0.1
+ * @category Type
  */
 export type FiniteNumber = Branded<
   number,
