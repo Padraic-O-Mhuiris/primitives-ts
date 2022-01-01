@@ -1,7 +1,7 @@
 /** @since 0.0.1 */
 
 import * as E from 'fp-ts/Eq'
-import { unsafeCoerce } from 'fp-ts/lib/function'
+import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/Ord'
 import * as S from 'fp-ts/Show'
 import { make } from 'io-ts/Codec'
@@ -14,12 +14,15 @@ import { Ordering, _encoder } from './utils'
 // -------------------------------------------------------------------------------------
 
 /**
- * Extension of `number` which filters `(-)Infinity` or `NaN`
+ * Captures strings which represent hexadecimal representations of numbers
  *
  * @since 0.0.1
  * @category Type
  */
-export type FiniteNumber = number & { readonly FiniteNumber: unique symbol }
+
+export type HexadecimalString = string & {
+  readonly HexadecimalString: unique symbol
+}
 
 // -------------------------------------------------------------------------------------
 // Instances
@@ -29,13 +32,13 @@ export type FiniteNumber = number & { readonly FiniteNumber: unique symbol }
  * @since 0.0.1
  * @category Instances
  */
-export const Eq: E.Eq<FiniteNumber> = E.eqStrict
+export const Eq: E.Eq<HexadecimalString> = E.eqStrict
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Ord: O.Ord<FiniteNumber> = {
+export const Ord: O.Ord<HexadecimalString> = {
   equals: Eq.equals,
   compare: (x, y) => (x < y ? Ordering.LT : x > y ? Ordering.GT : Ordering.EQ),
 }
@@ -44,25 +47,9 @@ export const Ord: O.Ord<FiniteNumber> = {
  * @since 0.0.1
  * @category Instances
  */
-export const Show: S.Show<FiniteNumber> = {
-  show: (a) => a,
+export const Show: S.Show<HexadecimalString> = {
+  show: (a) => a.toString(),
 }
-
-// -----------------------------------------------------------------------------
-// Constants
-// -----------------------------------------------------------------------------
-
-/**
- * @since 0.0.1
- * @category Constants
- */
-export const zero: FiniteNumber = unsafeCoerce(0)
-
-/**
- * @since 1.0.0
- * @category Constants
- */
-export const one: FiniteNumber = unsafeCoerce(1)
 
 // -------------------------------------------------------------------------------------
 // IO
@@ -72,16 +59,20 @@ export const one: FiniteNumber = unsafeCoerce(1)
  * @since 0.0.1
  * @category IO
  */
-export const Decoder: DEC.Decoder<unknown, FiniteNumber> = DEC.refine(
-  (a): a is FiniteNumber => Number.isFinite(a),
-  'FiniteNumber'
-)(DEC.number)
+export const Decoder: DEC.Decoder<unknown, HexadecimalString> = pipe(
+  DEC.string,
+  DEC.refine(
+    (a): a is HexadecimalString =>
+      /^[+-]?(0x)[0-9a-fA-F]+((\.[0-9a-fA-F]+){1})?$/.test(a),
+    'HexadecimalString'
+  )
+)
 
 /**
  * @since 0.0.1
  * @category IO
  */
-export const Encoder: ENC.Encoder<number, FiniteNumber> = _encoder
+export const Encoder: ENC.Encoder<string, HexadecimalString> = _encoder
 
 /**
  * @since 0.0.1
