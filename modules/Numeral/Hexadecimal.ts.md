@@ -1,10 +1,10 @@
 ---
-title: DecimalString.ts
-nav_order: 1
+title: Numeral/Hexadecimal.ts
+nav_order: 4
 parent: Modules
 ---
 
-## DecimalString overview
+## Hexadecimal overview
 
 Added in v0.0.1
 
@@ -21,7 +21,7 @@ Added in v0.0.1
   - [Ord](#ord)
   - [Show](#show)
 - [Type](#type)
-  - [DecimalString (type alias)](#decimalstring-type-alias)
+  - [Hexadecimal (type alias)](#hexadecimal-type-alias)
 
 ---
 
@@ -32,7 +32,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Codec: Codec<unknown, string, DecimalString>
+export declare const Codec: Codec<unknown, string, Hexadecimal>
 ```
 
 Added in v0.0.1
@@ -42,7 +42,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Decoder: DEC.Decoder<unknown, DecimalString>
+export declare const Decoder: DEC.Decoder<unknown, Hexadecimal>
 ```
 
 Added in v0.0.1
@@ -52,7 +52,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Encoder: ENC.Encoder<string, DecimalString>
+export declare const Encoder: ENC.Encoder<string, Hexadecimal>
 ```
 
 Added in v0.0.1
@@ -64,7 +64,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Eq: E.Eq<DecimalString>
+export declare const Eq: E.Eq<Hexadecimal>
 ```
 
 Added in v0.0.1
@@ -74,7 +74,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Ord: O.Ord<DecimalString>
+export declare const Ord: O.Ord<Hexadecimal>
 ```
 
 Added in v0.0.1
@@ -84,22 +84,22 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Show: S.Show<DecimalString>
+export declare const Show: S.Show<Hexadecimal>
 ```
 
 Added in v0.0.1
 
 # Type
 
-## DecimalString (type alias)
+## Hexadecimal (type alias)
 
-Captures strings which represent decimal representations of numbers including exponents
+Hexadecimal string numeral prefixed with '0x'
 
 **Signature**
 
 ```ts
-export type DecimalString = string & {
-  readonly DecimalString: unique symbol
+export type Hexadecimal = string & {
+  readonly Hexadecimal: unique symbol
 }
 ```
 
