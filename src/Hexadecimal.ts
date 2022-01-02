@@ -11,7 +11,7 @@ import * as S from 'fp-ts/Show'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
-import { _encoder } from '../utils'
+import { _encoder } from './utils'
 import * as STR from 'fp-ts/string'
 import { Refinement } from 'fp-ts/Refinement'
 
@@ -20,15 +20,15 @@ import { Refinement } from 'fp-ts/Refinement'
 // -------------------------------------------------------------------------------------
 
 /** @since 0.0.1 */
-export const URI = 'primitives-ts/Numeral/Hexadecimal'
+export const URI = 'primitives-ts/HexadecimalNumeral'
 
 /**
  * @since 0.0.1
  * @category Type
  */
 
-export type Hexadecimal = string & {
-  readonly Hexadecimal: unique symbol
+export type HexadecimalNumeral = string & {
+  readonly HexadecimalNumeral: unique symbol
 }
 
 // -------------------------------------------------------------------------------------
@@ -39,18 +39,18 @@ export type Hexadecimal = string & {
  * @since 0.0.1
  * @category Instances
  */
-export const Eq: E.Eq<Hexadecimal> = STR.Eq
+export const Eq: E.Eq<HexadecimalNumeral> = STR.Eq
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Ord: O.Ord<Hexadecimal> = STR.Ord
+export const Ord: O.Ord<HexadecimalNumeral> = STR.Ord
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Show: S.Show<Hexadecimal> = STR.Show
+export const Show: S.Show<HexadecimalNumeral> = STR.Show
 
 // -------------------------------------------------------------------------------------
 // Refinements
@@ -60,9 +60,10 @@ export const Show: S.Show<Hexadecimal> = STR.Show
  * @since 0.0.1
  * @category Refinements
  */
-export const isHexadecimal: Refinement<string, Hexadecimal> = (
+export const isHexadecimalNumeral: Refinement<string, HexadecimalNumeral> = (
   a: string
-): a is Hexadecimal => /^[+-]?(0x)[0-9a-fA-F]+((\.[0-9a-fA-F]+){1})?$/.test(a)
+): a is HexadecimalNumeral =>
+  /^[+-]?(0x)[0-9a-fA-F]+((\.[0-9a-fA-F]+){1})?$/.test(a)
 
 // -------------------------------------------------------------------------------------
 // IO
@@ -72,16 +73,16 @@ export const isHexadecimal: Refinement<string, Hexadecimal> = (
  * @since 0.0.1
  * @category IO
  */
-export const Decoder: DEC.Decoder<unknown, Hexadecimal> = pipe(
+export const Decoder: DEC.Decoder<unknown, HexadecimalNumeral> = pipe(
   DEC.string,
-  DEC.refine(isHexadecimal, URI)
+  DEC.refine(isHexadecimalNumeral, URI)
 )
 
 /**
  * @since 0.0.1
  * @category IO
  */
-export const Encoder: ENC.Encoder<string, Hexadecimal> = _encoder
+export const Encoder: ENC.Encoder<string, HexadecimalNumeral> = _encoder
 
 /**
  * @since 0.0.1

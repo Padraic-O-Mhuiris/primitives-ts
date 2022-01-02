@@ -13,21 +13,21 @@ import * as STR from 'fp-ts/string'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
-import { _encoder } from '../utils'
+import { _encoder } from './utils'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
 /** @since 0.0.1 */
-export const URI = 'primitives-ts/Numeral/Octal'
+export const URI = 'primitives-ts/OctalNumeral'
 
 /**
  * @since 0.0.1
  * @category Type
  */
-export type Octal = string & {
-  readonly Octal: unique symbol
+export type OctalNumeral = string & {
+  readonly OctalNumeral: unique symbol
 }
 
 // -------------------------------------------------------------------------------------
@@ -38,19 +38,19 @@ export type Octal = string & {
  * @since 0.0.1
  * @category Instances
  */
-export const Eq: E.Eq<Octal> = E.eqStrict
+export const Eq: E.Eq<OctalNumeral> = E.eqStrict
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Ord: O.Ord<Octal> = STR.Ord
+export const Ord: O.Ord<OctalNumeral> = STR.Ord
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Show: S.Show<Octal> = STR.Show
+export const Show: S.Show<OctalNumeral> = STR.Show
 
 // -------------------------------------------------------------------------------------
 // Refinements
@@ -60,8 +60,9 @@ export const Show: S.Show<Octal> = STR.Show
  * @since 0.0.1
  * @category Refinements
  */
-export const isOctal: Refinement<string, Octal> = (a: string): a is Octal =>
-  /^[+-]?(0o)[0-7]+((\.[0-7]+){1})?$/.test(a)
+export const isOctalNumeral: Refinement<string, OctalNumeral> = (
+  a: string
+): a is OctalNumeral => /^[+-]?(0o)[0-7]+((\.[0-7]+){1})?$/.test(a)
 
 // -------------------------------------------------------------------------------------
 // IO
@@ -71,16 +72,16 @@ export const isOctal: Refinement<string, Octal> = (a: string): a is Octal =>
  * @since 0.0.1
  * @category IO
  */
-export const Decoder: DEC.Decoder<unknown, Octal> = pipe(
+export const Decoder: DEC.Decoder<unknown, OctalNumeral> = pipe(
   DEC.string,
-  DEC.refine(isOctal, URI)
+  DEC.refine(isOctalNumeral, URI)
 )
 
 /**
  * @since 0.0.1
  * @category IO
  */
-export const Encoder: ENC.Encoder<string, Octal> = _encoder
+export const Encoder: ENC.Encoder<string, OctalNumeral> = _encoder
 
 /**
  * @since 0.0.1

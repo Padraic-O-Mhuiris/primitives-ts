@@ -1,5 +1,5 @@
 /**
- * Decimal string numeral including exponents
+ * Binary string numeral with prefix '0b'
  *
  * @since 0.0.1
  */
@@ -7,27 +7,27 @@
 import * as E from 'fp-ts/Eq'
 import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/Ord'
-import { Refinement } from 'fp-ts/Refinement'
 import * as S from 'fp-ts/Show'
-import * as STR from 'fp-ts/string'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
-import { _encoder } from '../utils'
+import { _encoder } from './utils'
+import * as STR from 'fp-ts/string'
+import { Refinement } from 'fp-ts/Refinement'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
 /** @since 0.0.1 */
-export const URI = 'primitives-ts/Numeral/Decimal'
+export const URI = 'primitives-ts/BinaryNumeral'
 
 /**
  * @since 0.0.1
  * @category Type
  */
-export type Decimal = string & {
-  readonly Decimal: unique symbol
+export type BinaryNumeral = string & {
+  readonly BinaryNumeral: unique symbol
 }
 
 // -------------------------------------------------------------------------------------
@@ -38,19 +38,19 @@ export type Decimal = string & {
  * @since 0.0.1
  * @category Instances
  */
-export const Eq: E.Eq<Decimal> = STR.Eq
+export const Eq: E.Eq<BinaryNumeral> = E.eqStrict
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Ord: O.Ord<Decimal> = STR.Ord
+export const Ord: O.Ord<BinaryNumeral> = STR.Ord
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Show: S.Show<Decimal> = STR.Show
+export const Show: S.Show<BinaryNumeral> = STR.Show
 
 // -------------------------------------------------------------------------------------
 // Refinements
@@ -60,9 +60,9 @@ export const Show: S.Show<Decimal> = STR.Show
  * @since 0.0.1
  * @category Refinements
  */
-export const isDecimal: Refinement<string, Decimal> = (
+export const isBinaryNumeral: Refinement<string, BinaryNumeral> = (
   a: string
-): a is Decimal => /^[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?$/.test(a)
+): a is BinaryNumeral => /^[+-]?(0b)[0-1]+((\.[0-1]+){1})?$/.test(a)
 
 // -------------------------------------------------------------------------------------
 // IO
@@ -72,16 +72,16 @@ export const isDecimal: Refinement<string, Decimal> = (
  * @since 0.0.1
  * @category IO
  */
-export const Decoder: DEC.Decoder<unknown, Decimal> = pipe(
+export const Decoder: DEC.Decoder<unknown, BinaryNumeral> = pipe(
   DEC.string,
-  DEC.refine(isDecimal, URI)
+  DEC.refine(isBinaryNumeral, URI)
 )
 
 /**
  * @since 0.0.1
  * @category IO
  */
-export const Encoder: ENC.Encoder<string, Decimal> = _encoder
+export const Encoder: ENC.Encoder<string, BinaryNumeral> = _encoder
 
 /**
  * @since 0.0.1
