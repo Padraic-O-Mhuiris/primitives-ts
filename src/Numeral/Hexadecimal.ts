@@ -1,4 +1,8 @@
-/** @since 0.0.1 */
+/**
+ * Hexadecimal string numeral prefixed with '0x'
+ *
+ * @since 0.0.1
+ */
 
 import * as E from 'fp-ts/Eq'
 import { pipe } from 'fp-ts/lib/function'
@@ -9,14 +13,16 @@ import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
 import { _encoder } from '../utils'
 import * as STR from 'fp-ts/string'
+import { Refinement } from 'fp-ts/Refinement'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
+/** @since 0.0.1 */
+const URI = 'primitives-ts/Numeral/Hexadecimal'
+
 /**
- * Hexadecimal string numeral prefixed with '0x'
- *
  * @since 0.0.1
  * @category Type
  */
@@ -47,6 +53,18 @@ export const Ord: O.Ord<Hexadecimal> = STR.Ord
 export const Show: S.Show<Hexadecimal> = STR.Show
 
 // -------------------------------------------------------------------------------------
+// Refinements
+// -------------------------------------------------------------------------------------
+
+/**
+ * @since 0.0.1
+ * @category Refinements
+ */
+export const isHexadecimal: Refinement<string, Hexadecimal> = (
+  a: string
+): a is Hexadecimal => /^[+-]?(0x)[0-9a-fA-F]+((\.[0-9a-fA-F]+){1})?$/.test(a)
+
+// -------------------------------------------------------------------------------------
 // IO
 // -------------------------------------------------------------------------------------
 
@@ -56,11 +74,7 @@ export const Show: S.Show<Hexadecimal> = STR.Show
  */
 export const Decoder: DEC.Decoder<unknown, Hexadecimal> = pipe(
   DEC.string,
-  DEC.refine(
-    (a): a is Hexadecimal =>
-      /^[+-]?(0x)[0-9a-fA-F]+((\.[0-9a-fA-F]+){1})?$/.test(a),
-    'Hexadecimal'
-  )
+  DEC.refine(isHexadecimal, URI)
 )
 
 /**

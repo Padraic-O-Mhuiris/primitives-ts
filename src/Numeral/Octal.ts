@@ -1,22 +1,28 @@
-/** @since 0.0.1 */
+/**
+ * Octal string numeral with prefix '0o'
+ *
+ * @since 0.0.1
+ */
 
 import * as E from 'fp-ts/Eq'
 import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/Ord'
+import { Refinement } from 'fp-ts/Refinement'
 import * as S from 'fp-ts/Show'
+import * as STR from 'fp-ts/string'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
 import { _encoder } from '../utils'
-import * as STR from 'fp-ts/string'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
+/** @since 0.0.1 */
+const URI = 'primitives-ts/Numeral/Octal'
+
 /**
- * Octal string numeral with prefix '0o'
- *
  * @since 0.0.1
  * @category Type
  */
@@ -47,6 +53,17 @@ export const Ord: O.Ord<Octal> = STR.Ord
 export const Show: S.Show<Octal> = STR.Show
 
 // -------------------------------------------------------------------------------------
+// Refinements
+// -------------------------------------------------------------------------------------
+
+/**
+ * @since 0.0.1
+ * @category Refinements
+ */
+export const isOctal: Refinement<string, Octal> = (a: string): a is Octal =>
+  /^[+-]?(0o)[0-7]+((\.[0-7]+){1})?$/.test(a)
+
+// -------------------------------------------------------------------------------------
 // IO
 // -------------------------------------------------------------------------------------
 
@@ -56,10 +73,7 @@ export const Show: S.Show<Octal> = STR.Show
  */
 export const Decoder: DEC.Decoder<unknown, Octal> = pipe(
   DEC.string,
-  DEC.refine(
-    (a): a is Octal => /^[+-]?(0o)[0-7]+((\.[0-7]+){1})?$/.test(a),
-    'Octal'
-  )
+  DEC.refine(isOctal, URI)
 )
 
 /**

@@ -1,22 +1,28 @@
-/** @since 0.0.1 */
+/**
+ * Decimal string numeral including exponents
+ *
+ * @since 0.0.1
+ */
 
 import * as E from 'fp-ts/Eq'
 import { pipe } from 'fp-ts/lib/function'
 import * as O from 'fp-ts/Ord'
+import { Refinement } from 'fp-ts/Refinement'
 import * as S from 'fp-ts/Show'
+import * as STR from 'fp-ts/string'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
 import { _encoder } from '../utils'
-import * as STR from 'fp-ts/string'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
+/** @since 0.0.1 */
+const URI = 'primitives-ts/Numeral/Decimal'
+
 /**
- * Decimal string numeral including exponents
- *
  * @since 0.0.1
  * @category Type
  */
@@ -47,6 +53,18 @@ export const Ord: O.Ord<Decimal> = STR.Ord
 export const Show: S.Show<Decimal> = STR.Show
 
 // -------------------------------------------------------------------------------------
+// Refinements
+// -------------------------------------------------------------------------------------
+
+/**
+ * @since 0.0.1
+ * @category Refinements
+ */
+export const isDecimal: Refinement<string, Decimal> = (
+  a: string
+): a is Decimal => /^[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?$/.test(a)
+
+// -------------------------------------------------------------------------------------
 // IO
 // -------------------------------------------------------------------------------------
 
@@ -56,10 +74,7 @@ export const Show: S.Show<Decimal> = STR.Show
  */
 export const Decoder: DEC.Decoder<unknown, Decimal> = pipe(
   DEC.string,
-  DEC.refine(
-    (a): a is Decimal => /^[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?$/.test(a),
-    'Numeral10'
-  )
+  DEC.refine(isDecimal, URI)
 )
 
 /**

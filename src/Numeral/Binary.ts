@@ -1,4 +1,8 @@
-/** @since 0.0.1 */
+/**
+ * Binary string numeral with prefix '0b'
+ *
+ * @since 0.0.1
+ */
 
 import * as E from 'fp-ts/Eq'
 import { pipe } from 'fp-ts/lib/function'
@@ -9,14 +13,16 @@ import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
 import { _encoder } from '../utils'
 import * as STR from 'fp-ts/string'
+import { Refinement } from 'fp-ts/Refinement'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
+/** @since 0.0.1 */
+const URI = 'primitives-ts/Numeral/Binary'
+
 /**
- * Binary string numeral with prefix '0b'
- *
  * @since 0.0.1
  * @category Type
  */
@@ -47,6 +53,17 @@ export const Ord: O.Ord<Binary> = STR.Ord
 export const Show: S.Show<Binary> = STR.Show
 
 // -------------------------------------------------------------------------------------
+// Refinements
+// -------------------------------------------------------------------------------------
+
+/**
+ * @since 0.0.1
+ * @category Refinements
+ */
+export const isBinary: Refinement<string, Binary> = (a: string): a is Binary =>
+  /^[+-]?(0b)[0-1]+((\.[0-1]+){1})?$/.test(a)
+
+// -------------------------------------------------------------------------------------
 // IO
 // -------------------------------------------------------------------------------------
 
@@ -56,10 +73,7 @@ export const Show: S.Show<Binary> = STR.Show
  */
 export const Decoder: DEC.Decoder<unknown, Binary> = pipe(
   DEC.string,
-  DEC.refine(
-    (a): a is Binary => /^[+-]?(0b)[0-1]+((\.[0-1]+){1})?$/.test(a),
-    'Binary'
-  )
+  DEC.refine(isBinary, URI)
 )
 
 /**
