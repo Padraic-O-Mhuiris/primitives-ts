@@ -7,7 +7,8 @@ import * as S from 'fp-ts/Show'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
-import { Ordering, _encoder } from './utils'
+import { _encoder } from './utils'
+import * as N from 'fp-ts/number'
 
 // -------------------------------------------------------------------------------------
 // Type
@@ -29,24 +30,18 @@ export type FiniteNumber = number & { readonly FiniteNumber: unique symbol }
  * @since 0.0.1
  * @category Instances
  */
-export const Eq: E.Eq<FiniteNumber> = E.eqStrict
+export const Eq: E.Eq<FiniteNumber> = N.Eq
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Ord: O.Ord<FiniteNumber> = {
-  equals: Eq.equals,
-  compare: (x, y) => (x < y ? Ordering.LT : x > y ? Ordering.GT : Ordering.EQ),
-}
-
+export const Ord: O.Ord<FiniteNumber> = N.Ord
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Show: S.Show<FiniteNumber> = {
-  show: (a) => a.toString(),
-}
+export const Show: S.Show<FiniteNumber> = N.Show
 
 // -----------------------------------------------------------------------------
 // Constants

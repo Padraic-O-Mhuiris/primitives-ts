@@ -35,6 +35,7 @@
     "test:watch": "yarn run jest --watch",
     "docs": "yarn run docs-ts",
     "spell": "yarn cspell '**/*.*'",
-    "md": "yarn run markdown"
+    "md": "yarn run markdown",
+    "typecheck": "tsc -p tsconfig.build.json"
   }
 }
