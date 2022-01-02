@@ -20,7 +20,7 @@ import { _encoder } from '../utils'
 // -------------------------------------------------------------------------------------
 
 /** @since 0.0.1 */
-const URI = 'primitives-ts/Numeral/Decimal'
+export const URI = 'primitives-ts/Numeral/Decimal'
 
 /**
  * @since 0.0.1

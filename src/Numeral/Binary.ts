@@ -20,7 +20,7 @@ import { Refinement } from 'fp-ts/Refinement'
 // -------------------------------------------------------------------------------------
 
 /** @since 0.0.1 */
-const URI = 'primitives-ts/Numeral/Binary'
+export const URI = 'primitives-ts/Numeral/Binary'
 
 /**
  * @since 0.0.1

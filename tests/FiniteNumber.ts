@@ -1,8 +1,8 @@
 import * as U from './utils'
-import * as _ from '../src/FiniteNumber'
+import * as _ from '../src/SafeNumber'
 import { isLeft, isRight } from 'fp-ts/lib/Either'
 
-describe('FiniteNumber', () => {
+describe(_.URI, () => {
   it('Eq', () => {
     U.isTrue(_.Eq.equals(_.one, _.one))
     U.isFalse(_.Eq.equals(_.zero, _.one))

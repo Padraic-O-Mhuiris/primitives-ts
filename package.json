@@ -36,6 +36,6 @@
     "docs": "yarn run docs-ts",
     "spell": "yarn cspell '**/*.*'",
     "md": "yarn run markdown",
-    "typecheck": "tsc -p tsconfig.build.json"
+    "typecheck": "tsc"
   }
 }

@@ -22,7 +22,7 @@ import * as B from 'fp-ts/Bounded'
 // -------------------------------------------------------------------------------------
 
 /** @since 0.0.1 */
-const URI = 'primitives-ts/SafeNumber'
+export const URI = 'primitives-ts/SafeNumber'
 
 /**
  * @since 0.0.1
