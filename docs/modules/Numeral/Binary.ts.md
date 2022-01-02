@@ -1,10 +1,12 @@
 ---
 title: Numeral/Binary.ts
-nav_order: 2
+nav_order: 1
 parent: Modules
 ---
 
 ## Binary overview
+
+Binary string numeral with prefix '0b'
 
 Added in v0.0.1
 
@@ -20,6 +22,8 @@ Added in v0.0.1
   - [Eq](#eq)
   - [Ord](#ord)
   - [Show](#show)
+- [Refinements](#refinements)
+  - [isBinary](#isbinary)
 - [Type](#type)
   - [Binary (type alias)](#binary-type-alias)
 
@@ -89,11 +93,21 @@ export declare const Show: S.Show<Binary>
 
 Added in v0.0.1
 
+# Refinements
+
+## isBinary
+
+**Signature**
+
+```ts
+export declare const isBinary: Refinement<string, Binary>
+```
+
+Added in v0.0.1
+
 # Type
 
 ## Binary (type alias)
-
-Binary string numeral with prefix '0b'
 
 **Signature**
 

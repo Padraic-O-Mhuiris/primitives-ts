@@ -1,10 +1,12 @@
 ---
 title: Numeral/Decimal.ts
-nav_order: 3
+nav_order: 2
 parent: Modules
 ---
 
 ## Decimal overview
+
+Decimal string numeral including exponents
 
 Added in v0.0.1
 
@@ -20,6 +22,8 @@ Added in v0.0.1
   - [Eq](#eq)
   - [Ord](#ord)
   - [Show](#show)
+- [Refinements](#refinements)
+  - [isDecimal](#isdecimal)
 - [Type](#type)
   - [Decimal (type alias)](#decimal-type-alias)
 
@@ -89,11 +93,21 @@ export declare const Show: S.Show<Decimal>
 
 Added in v0.0.1
 
+# Refinements
+
+## isDecimal
+
+**Signature**
+
+```ts
+export declare const isDecimal: Refinement<string, Decimal>
+```
+
+Added in v0.0.1
+
 # Type
 
 ## Decimal (type alias)
-
-Decimal string numeral including exponents
 
 **Signature**
 

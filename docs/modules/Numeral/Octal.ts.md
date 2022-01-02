@@ -1,10 +1,12 @@
 ---
 title: Numeral/Octal.ts
-nav_order: 6
+nav_order: 5
 parent: Modules
 ---
 
 ## Octal overview
+
+Octal string numeral with prefix '0o'
 
 Added in v0.0.1
 
@@ -20,6 +22,8 @@ Added in v0.0.1
   - [Eq](#eq)
   - [Ord](#ord)
   - [Show](#show)
+- [Refinements](#refinements)
+  - [isOctal](#isoctal)
 - [Type](#type)
   - [Octal (type alias)](#octal-type-alias)
 
@@ -89,11 +93,21 @@ export declare const Show: S.Show<Octal>
 
 Added in v0.0.1
 
+# Refinements
+
+## isOctal
+
+**Signature**
+
+```ts
+export declare const isOctal: Refinement<string, Octal>
+```
+
+Added in v0.0.1
+
 # Type
 
 ## Octal (type alias)
-
-Octal string numeral with prefix '0o'
 
 **Signature**
 
