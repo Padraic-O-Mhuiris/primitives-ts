@@ -7,21 +7,22 @@ import * as S from 'fp-ts/Show'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
-import { Ordering, _encoder } from './utils'
+import { _encoder } from '../utils'
+import * as STR from 'fp-ts/string'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
 /**
- * Captures strings which represent hexadecimal representations of numbers
+ * Hexadecimal string numeral prefixed with '0x'
  *
  * @since 0.0.1
  * @category Type
  */
 
-export type HexadecimalString = string & {
-  readonly HexadecimalString: unique symbol
+export type Hexadecimal = string & {
+  readonly Hexadecimal: unique symbol
 }
 
 // -------------------------------------------------------------------------------------
@@ -32,24 +33,18 @@ export type HexadecimalString = string & {
  * @since 0.0.1
  * @category Instances
  */
-export const Eq: E.Eq<HexadecimalString> = E.eqStrict
+export const Eq: E.Eq<Hexadecimal> = STR.Eq
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Ord: O.Ord<HexadecimalString> = {
-  equals: Eq.equals,
-  compare: (x, y) => (x < y ? Ordering.LT : x > y ? Ordering.GT : Ordering.EQ),
-}
-
+export const Ord: O.Ord<Hexadecimal> = STR.Ord
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Show: S.Show<HexadecimalString> = {
-  show: (a) => a,
-}
+export const Show: S.Show<Hexadecimal> = STR.Show
 
 // -------------------------------------------------------------------------------------
 // IO
@@ -59,12 +54,12 @@ export const Show: S.Show<HexadecimalString> = {
  * @since 0.0.1
  * @category IO
  */
-export const Decoder: DEC.Decoder<unknown, HexadecimalString> = pipe(
+export const Decoder: DEC.Decoder<unknown, Hexadecimal> = pipe(
   DEC.string,
   DEC.refine(
-    (a): a is HexadecimalString =>
+    (a): a is Hexadecimal =>
       /^[+-]?(0x)[0-9a-fA-F]+((\.[0-9a-fA-F]+){1})?$/.test(a),
-    'HexadecimalString'
+    'Hexadecimal'
   )
 )
 
@@ -72,7 +67,7 @@ export const Decoder: DEC.Decoder<unknown, HexadecimalString> = pipe(
  * @since 0.0.1
  * @category IO
  */
-export const Encoder: ENC.Encoder<string, HexadecimalString> = _encoder
+export const Encoder: ENC.Encoder<string, Hexadecimal> = _encoder
 
 /**
  * @since 0.0.1

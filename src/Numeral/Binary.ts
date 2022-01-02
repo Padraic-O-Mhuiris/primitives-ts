@@ -7,21 +7,21 @@ import * as S from 'fp-ts/Show'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
-import { Ordering, _encoder } from './utils'
+import { _encoder } from '../utils'
+import * as STR from 'fp-ts/string'
 
 // -------------------------------------------------------------------------------------
 // Type
 // -------------------------------------------------------------------------------------
 
 /**
- * Captures strings which represent decimal representations of numbers including exponents
+ * Binary string numeral with prefix '0b'
  *
  * @since 0.0.1
  * @category Type
  */
-
-export type DecimalString = string & {
-  readonly DecimalString: unique symbol
+export type Binary = string & {
+  readonly Binary: unique symbol
 }
 
 // -------------------------------------------------------------------------------------
@@ -32,24 +32,19 @@ export type DecimalString = string & {
  * @since 0.0.1
  * @category Instances
  */
-export const Eq: E.Eq<DecimalString> = E.eqStrict
+export const Eq: E.Eq<Binary> = E.eqStrict
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Ord: O.Ord<DecimalString> = {
-  equals: Eq.equals,
-  compare: (x, y) => (x < y ? Ordering.LT : x > y ? Ordering.GT : Ordering.EQ),
-}
+export const Ord: O.Ord<Binary> = STR.Ord
 
 /**
  * @since 0.0.1
  * @category Instances
  */
-export const Show: S.Show<DecimalString> = {
-  show: (a) => a,
-}
+export const Show: S.Show<Binary> = STR.Show
 
 // -------------------------------------------------------------------------------------
 // IO
@@ -59,12 +54,11 @@ export const Show: S.Show<DecimalString> = {
  * @since 0.0.1
  * @category IO
  */
-export const Decoder: DEC.Decoder<unknown, DecimalString> = pipe(
+export const Decoder: DEC.Decoder<unknown, Binary> = pipe(
   DEC.string,
   DEC.refine(
-    (a): a is DecimalString =>
-      /^[-+]?[0-9]+(\.?[0-9]+)?([eE][-+]?[0-9]+)?$/.test(a),
-    'DecimalString'
+    (a): a is Binary => /^[+-]?(0b)[0-1]+((\.[0-1]+){1})?$/.test(a),
+    'Binary'
   )
 )
 
@@ -72,7 +66,7 @@ export const Decoder: DEC.Decoder<unknown, DecimalString> = pipe(
  * @since 0.0.1
  * @category IO
  */
-export const Encoder: ENC.Encoder<string, DecimalString> = _encoder
+export const Encoder: ENC.Encoder<string, Binary> = _encoder
 
 /**
  * @since 0.0.1
