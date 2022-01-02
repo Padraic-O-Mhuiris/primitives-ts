@@ -1,12 +1,12 @@
 ---
-title: Numeral/Decimal.ts
-nav_order: 2
+title: OctalNumeral.ts
+nav_order: 5
 parent: Modules
 ---
 
-## Decimal overview
+## OctalNumeral overview
 
-Decimal string numeral including exponents
+Octal string numeral with prefix '0o'
 
 Added in v0.0.1
 
@@ -23,9 +23,9 @@ Added in v0.0.1
   - [Ord](#ord)
   - [Show](#show)
 - [Refinements](#refinements)
-  - [isDecimal](#isdecimal)
+  - [isOctalNumeral](#isoctalnumeral)
 - [Type](#type)
-  - [Decimal (type alias)](#decimal-type-alias)
+  - [OctalNumeral (type alias)](#octalnumeral-type-alias)
 - [utils](#utils)
   - [URI](#uri)
 
@@ -38,7 +38,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Codec: Codec<unknown, string, Decimal>
+export declare const Codec: Codec<unknown, string, OctalNumeral>
 ```
 
 Added in v0.0.1
@@ -48,7 +48,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Decoder: DEC.Decoder<unknown, Decimal>
+export declare const Decoder: DEC.Decoder<unknown, OctalNumeral>
 ```
 
 Added in v0.0.1
@@ -58,7 +58,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Encoder: ENC.Encoder<string, Decimal>
+export declare const Encoder: ENC.Encoder<string, OctalNumeral>
 ```
 
 Added in v0.0.1
@@ -70,7 +70,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Eq: E.Eq<Decimal>
+export declare const Eq: E.Eq<OctalNumeral>
 ```
 
 Added in v0.0.1
@@ -80,7 +80,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Ord: O.Ord<Decimal>
+export declare const Ord: O.Ord<OctalNumeral>
 ```
 
 Added in v0.0.1
@@ -90,32 +90,32 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Show: S.Show<Decimal>
+export declare const Show: S.Show<OctalNumeral>
 ```
 
 Added in v0.0.1
 
 # Refinements
 
-## isDecimal
+## isOctalNumeral
 
 **Signature**
 
 ```ts
-export declare const isDecimal: Refinement<string, Decimal>
+export declare const isOctalNumeral: Refinement<string, OctalNumeral>
 ```
 
 Added in v0.0.1
 
 # Type
 
-## Decimal (type alias)
+## OctalNumeral (type alias)
 
 **Signature**
 
 ```ts
-export type Decimal = string & {
-  readonly Decimal: unique symbol
+export type OctalNumeral = string & {
+  readonly OctalNumeral: unique symbol
 }
 ```
 
@@ -128,7 +128,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const URI: 'primitives-ts/Numeral/Decimal'
+export declare const URI: 'primitives-ts/OctalNumeral'
 ```
 
 Added in v0.0.1

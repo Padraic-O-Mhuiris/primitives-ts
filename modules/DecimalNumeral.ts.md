@@ -1,12 +1,12 @@
 ---
-title: Numeral/Binary.ts
-nav_order: 1
+title: DecimalNumeral.ts
+nav_order: 2
 parent: Modules
 ---
 
-## Binary overview
+## DecimalNumeral overview
 
-Binary string numeral with prefix '0b'
+Decimal string numeral including exponents
 
 Added in v0.0.1
 
@@ -23,9 +23,9 @@ Added in v0.0.1
   - [Ord](#ord)
   - [Show](#show)
 - [Refinements](#refinements)
-  - [isBinary](#isbinary)
+  - [isDecimalNumeral](#isdecimalnumeral)
 - [Type](#type)
-  - [Binary (type alias)](#binary-type-alias)
+  - [DecimalNumeral (type alias)](#decimalnumeral-type-alias)
 - [utils](#utils)
   - [URI](#uri)
 
@@ -38,7 +38,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Codec: Codec<unknown, string, Binary>
+export declare const Codec: Codec<unknown, string, DecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -48,7 +48,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Decoder: DEC.Decoder<unknown, Binary>
+export declare const Decoder: DEC.Decoder<unknown, DecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -58,7 +58,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Encoder: ENC.Encoder<string, Binary>
+export declare const Encoder: ENC.Encoder<string, DecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -70,7 +70,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Eq: E.Eq<Binary>
+export declare const Eq: E.Eq<DecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -80,7 +80,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Ord: O.Ord<Binary>
+export declare const Ord: O.Ord<DecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -90,32 +90,32 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Show: S.Show<Binary>
+export declare const Show: S.Show<DecimalNumeral>
 ```
 
 Added in v0.0.1
 
 # Refinements
 
-## isBinary
+## isDecimalNumeral
 
 **Signature**
 
 ```ts
-export declare const isBinary: Refinement<string, Binary>
+export declare const isDecimalNumeral: Refinement<string, DecimalNumeral>
 ```
 
 Added in v0.0.1
 
 # Type
 
-## Binary (type alias)
+## DecimalNumeral (type alias)
 
 **Signature**
 
 ```ts
-export type Binary = string & {
-  readonly Binary: unique symbol
+export type DecimalNumeral = string & {
+  readonly DecimalNumeral: unique symbol
 }
 ```
 
@@ -128,7 +128,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const URI: 'primitives-ts/Numeral/Binary'
+export declare const URI: 'primitives-ts/DecimalNumeral'
 ```
 
 Added in v0.0.1

@@ -1,12 +1,12 @@
 ---
-title: Numeral/Octal.ts
-nav_order: 5
+title: BinaryNumeral.ts
+nav_order: 1
 parent: Modules
 ---
 
-## Octal overview
+## BinaryNumeral overview
 
-Octal string numeral with prefix '0o'
+Binary string numeral with prefix '0b'
 
 Added in v0.0.1
 
@@ -23,9 +23,9 @@ Added in v0.0.1
   - [Ord](#ord)
   - [Show](#show)
 - [Refinements](#refinements)
-  - [isOctal](#isoctal)
+  - [isBinaryNumeral](#isbinarynumeral)
 - [Type](#type)
-  - [Octal (type alias)](#octal-type-alias)
+  - [BinaryNumeral (type alias)](#binarynumeral-type-alias)
 - [utils](#utils)
   - [URI](#uri)
 
@@ -38,7 +38,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Codec: Codec<unknown, string, Octal>
+export declare const Codec: Codec<unknown, string, BinaryNumeral>
 ```
 
 Added in v0.0.1
@@ -48,7 +48,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Decoder: DEC.Decoder<unknown, Octal>
+export declare const Decoder: DEC.Decoder<unknown, BinaryNumeral>
 ```
 
 Added in v0.0.1
@@ -58,7 +58,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Encoder: ENC.Encoder<string, Octal>
+export declare const Encoder: ENC.Encoder<string, BinaryNumeral>
 ```
 
 Added in v0.0.1
@@ -70,7 +70,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Eq: E.Eq<Octal>
+export declare const Eq: E.Eq<BinaryNumeral>
 ```
 
 Added in v0.0.1
@@ -80,7 +80,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Ord: O.Ord<Octal>
+export declare const Ord: O.Ord<BinaryNumeral>
 ```
 
 Added in v0.0.1
@@ -90,32 +90,32 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Show: S.Show<Octal>
+export declare const Show: S.Show<BinaryNumeral>
 ```
 
 Added in v0.0.1
 
 # Refinements
 
-## isOctal
+## isBinaryNumeral
 
 **Signature**
 
 ```ts
-export declare const isOctal: Refinement<string, Octal>
+export declare const isBinaryNumeral: Refinement<string, BinaryNumeral>
 ```
 
 Added in v0.0.1
 
 # Type
 
-## Octal (type alias)
+## BinaryNumeral (type alias)
 
 **Signature**
 
 ```ts
-export type Octal = string & {
-  readonly Octal: unique symbol
+export type BinaryNumeral = string & {
+  readonly BinaryNumeral: unique symbol
 }
 ```
 
@@ -128,7 +128,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const URI: 'primitives-ts/Numeral/Octal'
+export declare const URI: 'primitives-ts/BinaryNumeral'
 ```
 
 Added in v0.0.1

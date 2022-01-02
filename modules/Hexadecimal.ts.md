@@ -1,5 +1,5 @@
 ---
-title: Numeral/Hexadecimal.ts
+title: Hexadecimal.ts
 nav_order: 3
 parent: Modules
 ---
@@ -23,9 +23,9 @@ Added in v0.0.1
   - [Ord](#ord)
   - [Show](#show)
 - [Refinements](#refinements)
-  - [isHexadecimal](#ishexadecimal)
+  - [isHexadecimalNumeral](#ishexadecimalnumeral)
 - [Type](#type)
-  - [Hexadecimal (type alias)](#hexadecimal-type-alias)
+  - [HexadecimalNumeral (type alias)](#hexadecimalnumeral-type-alias)
 - [utils](#utils)
   - [URI](#uri)
 
@@ -38,7 +38,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Codec: Codec<unknown, string, Hexadecimal>
+export declare const Codec: Codec<unknown, string, HexadecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -48,7 +48,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Decoder: DEC.Decoder<unknown, Hexadecimal>
+export declare const Decoder: DEC.Decoder<unknown, HexadecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -58,7 +58,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Encoder: ENC.Encoder<string, Hexadecimal>
+export declare const Encoder: ENC.Encoder<string, HexadecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -70,7 +70,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Eq: E.Eq<Hexadecimal>
+export declare const Eq: E.Eq<HexadecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -80,7 +80,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Ord: O.Ord<Hexadecimal>
+export declare const Ord: O.Ord<HexadecimalNumeral>
 ```
 
 Added in v0.0.1
@@ -90,32 +90,32 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const Show: S.Show<Hexadecimal>
+export declare const Show: S.Show<HexadecimalNumeral>
 ```
 
 Added in v0.0.1
 
 # Refinements
 
-## isHexadecimal
+## isHexadecimalNumeral
 
 **Signature**
 
 ```ts
-export declare const isHexadecimal: Refinement<string, Hexadecimal>
+export declare const isHexadecimalNumeral: Refinement<string, HexadecimalNumeral>
 ```
 
 Added in v0.0.1
 
 # Type
 
-## Hexadecimal (type alias)
+## HexadecimalNumeral (type alias)
 
 **Signature**
 
 ```ts
-export type Hexadecimal = string & {
-  readonly Hexadecimal: unique symbol
+export type HexadecimalNumeral = string & {
+  readonly HexadecimalNumeral: unique symbol
 }
 ```
 
@@ -128,7 +128,7 @@ Added in v0.0.1
 **Signature**
 
 ```ts
-export declare const URI: 'primitives-ts/Numeral/Hexadecimal'
+export declare const URI: 'primitives-ts/HexadecimalNumeral'
 ```
 
 Added in v0.0.1
