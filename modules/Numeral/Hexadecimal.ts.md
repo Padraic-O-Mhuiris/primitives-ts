@@ -1,10 +1,12 @@
 ---
 title: Numeral/Hexadecimal.ts
-nav_order: 4
+nav_order: 3
 parent: Modules
 ---
 
 ## Hexadecimal overview
+
+Hexadecimal string numeral prefixed with '0x'
 
 Added in v0.0.1
 
@@ -20,8 +22,12 @@ Added in v0.0.1
   - [Eq](#eq)
   - [Ord](#ord)
   - [Show](#show)
+- [Refinements](#refinements)
+  - [isHexadecimal](#ishexadecimal)
 - [Type](#type)
   - [Hexadecimal (type alias)](#hexadecimal-type-alias)
+- [utils](#utils)
+  - [URI](#uri)
 
 ---
 
@@ -89,11 +95,21 @@ export declare const Show: S.Show<Hexadecimal>
 
 Added in v0.0.1
 
+# Refinements
+
+## isHexadecimal
+
+**Signature**
+
+```ts
+export declare const isHexadecimal: Refinement<string, Hexadecimal>
+```
+
+Added in v0.0.1
+
 # Type
 
 ## Hexadecimal (type alias)
-
-Hexadecimal string numeral prefixed with '0x'
 
 **Signature**
 
@@ -101,6 +117,18 @@ Hexadecimal string numeral prefixed with '0x'
 export type Hexadecimal = string & {
   readonly Hexadecimal: unique symbol
 }
+```
+
+Added in v0.0.1
+
+# utils
+
+## URI
+
+**Signature**
+
+```ts
+export declare const URI: 'primitives-ts/Numeral/Hexadecimal'
 ```
 
 Added in v0.0.1

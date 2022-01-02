@@ -1,10 +1,10 @@
 ---
-title: Numeral/index.ts
-nav_order: 5
+title: Numeral/Numeral.ts
+nav_order: 4
 parent: Modules
 ---
 
-## index overview
+## Numeral overview
 
 A `Numeral` is a string that represents a numerical quantity.
 
