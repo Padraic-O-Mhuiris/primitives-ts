@@ -4,12 +4,12 @@
  * @since 0.0.1
  */
 
-import * as E from 'fp-ts/Eq'
+import * as E from 'fp-ts/lib/Eq'
 import { pipe } from 'fp-ts/lib/function'
-import * as O from 'fp-ts/Ord'
-import { Refinement } from 'fp-ts/Refinement'
-import * as S from 'fp-ts/Show'
-import * as STR from 'fp-ts/string'
+import * as O from 'fp-ts/lib/Ord'
+import { Refinement } from 'fp-ts/lib/Refinement'
+import * as S from 'fp-ts/lib/Show'
+import * as STR from 'fp-ts/lib/string'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
@@ -60,7 +60,7 @@ export const Show: S.Show<OctalNumeral> = STR.Show
  * @since 0.0.1
  * @category Refinements
  */
-export const isOctalNumeral: Refinement<string, OctalNumeral> = (
+export const refine: Refinement<string, OctalNumeral> = (
   a: string
 ): a is OctalNumeral => /^[+-]?(0o)[0-7]+((\.[0-7]+){1})?$/.test(a)
 
@@ -74,7 +74,7 @@ export const isOctalNumeral: Refinement<string, OctalNumeral> = (
  */
 export const Decoder: DEC.Decoder<unknown, OctalNumeral> = pipe(
   DEC.string,
-  DEC.refine(isOctalNumeral, URI)
+  DEC.refine(refine, URI)
 )
 
 /**

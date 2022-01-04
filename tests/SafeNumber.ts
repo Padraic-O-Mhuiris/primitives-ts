@@ -18,6 +18,9 @@ describe(_.URI, () => {
     U.isTrue(isRight(decode(Number.MAX_SAFE_INTEGER)))
     U.isTrue(isRight(decode(Number.MIN_SAFE_INTEGER)))
 
+    U.isTrue(isLeft(decode(Number.MAX_SAFE_INTEGER + 1)))
+    U.isTrue(isLeft(decode(Number.MIN_SAFE_INTEGER - 1)))
+
     U.isTrue(isLeft(decode(NaN)))
     U.isFalse(isRight(decode(NaN)))
 

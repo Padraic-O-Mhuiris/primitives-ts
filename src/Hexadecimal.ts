@@ -4,16 +4,16 @@
  * @since 0.0.1
  */
 
-import * as E from 'fp-ts/Eq'
+import * as E from 'fp-ts/lib/Eq'
 import { pipe } from 'fp-ts/lib/function'
-import * as O from 'fp-ts/Ord'
-import * as S from 'fp-ts/Show'
+import * as O from 'fp-ts/lib/Ord'
+import { Refinement } from 'fp-ts/lib/Refinement'
+import * as S from 'fp-ts/lib/Show'
+import * as STR from 'fp-ts/lib/string'
 import { make } from 'io-ts/Codec'
 import * as DEC from 'io-ts/Decoder'
 import * as ENC from 'io-ts/Encoder'
 import { _encoder } from './utils'
-import * as STR from 'fp-ts/string'
-import { Refinement } from 'fp-ts/Refinement'
 
 // -------------------------------------------------------------------------------------
 // Type
@@ -60,7 +60,7 @@ export const Show: S.Show<HexadecimalNumeral> = STR.Show
  * @since 0.0.1
  * @category Refinements
  */
-export const isHexadecimalNumeral: Refinement<string, HexadecimalNumeral> = (
+export const refine: Refinement<string, HexadecimalNumeral> = (
   a: string
 ): a is HexadecimalNumeral =>
   /^[+-]?(0x)[0-9a-fA-F]+((\.[0-9a-fA-F]+){1})?$/.test(a)
@@ -75,7 +75,7 @@ export const isHexadecimalNumeral: Refinement<string, HexadecimalNumeral> = (
  */
 export const Decoder: DEC.Decoder<unknown, HexadecimalNumeral> = pipe(
   DEC.string,
-  DEC.refine(isHexadecimalNumeral, URI)
+  DEC.refine(refine, URI)
 )
 
 /**
